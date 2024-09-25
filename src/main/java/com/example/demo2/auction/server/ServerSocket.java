@@ -9,7 +9,7 @@ import java.net.Socket;
 public class ServerSocket {
 
     public void start() throws IOException {
-
+        System.out.println("Start Server"); //start message
         int port = 8888;
         java.net.ServerSocket serverSocket = new java.net.ServerSocket(port); //port를 지정해 socket과 binding
         while (true) {
