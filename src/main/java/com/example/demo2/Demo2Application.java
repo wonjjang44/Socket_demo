@@ -14,17 +14,6 @@ public class Demo2Application {
 	public static void main(String[] args) throws IOException {
 
 		SpringApplication.run(Demo2Application.class, args);
-		Scanner sc = new Scanner(System.in);
-		int input = sc.nextInt();
-		if (input == 1) {
-			ServerSocket serverSocket = new ServerSocket();
-			serverSocket.start();
-		} else if (input == 2) {
-			ClientSocket clientSocket = new ClientSocket();
-			clientSocket.start();
-		} else {
-			throw new IllegalArgumentException("Illegal Number");
-		}
 	}
 
 }
