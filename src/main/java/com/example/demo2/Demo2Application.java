@@ -12,7 +12,6 @@ import java.util.Scanner;
 public class Demo2Application {
 
 	public static void main(String[] args) throws IOException {
-
 		SpringApplication.run(Demo2Application.class, args);
 	}
 
