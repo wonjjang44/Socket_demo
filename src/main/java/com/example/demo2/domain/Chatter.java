@@ -1,5 +1,6 @@
 package com.example.demo2.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
@@ -13,8 +14,10 @@ import lombok.NoArgsConstructor;
 public class Chatter {
 
     @Id
+    @Column(name = "chatterId")
     private String id;
 
+    @Column(name = "nickname")
     private String nickname;
 
     @Builder

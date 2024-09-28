@@ -1,9 +1,6 @@
 package com.example.demo2.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
@@ -15,9 +12,11 @@ import lombok.NoArgsConstructor;
 public class ChatRoom {
 
     @Id
+    @Column(name = "chatRoomId")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(name = "name")
     private String name;
 
     @Builder
