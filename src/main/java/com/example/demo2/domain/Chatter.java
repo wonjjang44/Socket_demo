@@ -15,16 +15,14 @@ public class Chatter {
 
     @Id
     @Column(name = "chatterId")
-    private String id;
+    private String chatterId;
 
-    @Column(name = "nickname")
-    private String nickname;
+    @Column(name = "sessionId")
+    private String sessionId;
 
     @Builder
-    public static Chatter toEntity(String id, String nickname) {
-        return Chatter.builder()
-                .id(id)
-                .nickname(nickname)
-                .build();
+    public Chatter(String id, String sessionId) {
+        this.chatterId = id;
+        this.sessionId = sessionId;
     }
 }

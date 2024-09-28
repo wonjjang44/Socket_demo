@@ -15,8 +15,8 @@ public class MessageDto {
         ENTER, TALK, LEAVE
     }
 
-    private MessageType messageType;
+    private MessageType type;
     private Long chatRoom;
-    private String sender;
+    private String id;
     private String message;
 }
