@@ -27,32 +27,4 @@ public class ChatController {
         }
         simpMessageSendingOperations.convertAndSend("/sub/chat/room/" + messageDto.getChatRoom(), messageDto);
     }
-
-    /*
-    private final ChatService chatService;
-
-    @PostMapping("/chat")
-    public ResponseEntity<ChatRoom> createChatRoom(@RequestBody AddChatRoomDto chatRoomDto) {
-        ChatRoom chatRoom = chatService.createRoom(chatRoomDto.getName());
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body(chatRoom);
-    }
-
-    @GetMapping("/chat/all")
-    public ResponseEntity<List<ChatRoomResponse>> findAllChatRoom() {
-        List<ChatRoomResponse> roomResponse = chatService.findAllRoom()
-                .stream()
-                .map(ChatRoomResponse::new)
-                .toList();
-        return ResponseEntity.ok()
-                .body(roomResponse);
-    }
-
-    @GetMapping("/chat/{chatId}")
-    public ResponseEntity<ChatRoomResponse> findChatRoom(@PathVariable(value = "chatId") String chatId) {
-        ChatRoom chatRoom = chatService.findRoomById(chatId);
-        return ResponseEntity.ok()
-                .body(new ChatRoomResponse(chatRoom));
-    }
-    */
 }
