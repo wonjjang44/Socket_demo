@@ -10,8 +10,8 @@ public class WebSockConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry brokerRegistry) {
-        brokerRegistry.enableSimpleBroker("/sub"); //메시지 수신 요청
-        brokerRegistry.setApplicationDestinationPrefixes("/pub"); //메시지 수신 요청
+        brokerRegistry.enableSimpleBroker("/sub"); //server
+        brokerRegistry.setApplicationDestinationPrefixes("/pub"); //client
     }
 
     @Override
