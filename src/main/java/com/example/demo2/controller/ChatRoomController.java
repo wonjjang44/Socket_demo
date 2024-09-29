@@ -46,7 +46,7 @@ public class ChatRoomController {
     @GetMapping("/chat/room/enter/{chatRoomId}")
     public String enterChatRoom(Model model, @PathVariable(value = "chatRoomId") String chatRoomId) {
         model.addAttribute("chatRoomId", chatRoomId);
-        return "/chat/chatRoomEnter";
+        return "/chat/enterRoom";
     } //채팅방 입장 화면
 
     @GetMapping("/chat/room/{chatRoomId}")
