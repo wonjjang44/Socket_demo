@@ -36,7 +36,7 @@ public class ChatController {
 
     @GetMapping("/chat/{chatId}")
     public ResponseEntity<ChatRoomResponse> findChatRoom(@PathVariable(value = "chatId") String chatId) {
-        ChatRoom chatRoom = chatService.findRoomByChatRoomId(chatId);
+        ChatRoom chatRoom = chatService.findRoomById(chatId);
         return ResponseEntity.ok()
                 .body(new ChatRoomResponse(chatRoom));
     }
