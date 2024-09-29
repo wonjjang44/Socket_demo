@@ -48,6 +48,17 @@ public class ChatRoom {
             chatters.add(chatter);
             messageDto.setMessage(messageDto.getId() + "님이 입장했습니다.");
         }
+
+        if (messageDto.getType().equals(MessageDto.MessageType.LEAVE)) {
+            Chatter chatter = chatters.stream()
+                    .filter(c -> socketSession.getId().equals(c.getSessionId()))
+                    .findAny()
+                    .orElse(null);
+
+            WebSockSessionManager.removeSession(socketSession.getId());
+            chatters.remove(chatter);
+            messageDto.setMessage(messageDto.getId() + "님이 퇴장했습니다.");
+        }
         sendMessage(messageDto, chatService);
     }
 
