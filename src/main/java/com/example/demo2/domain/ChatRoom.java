@@ -41,6 +41,7 @@ public class ChatRoom {
         this.chatters = new ArrayList<>();
     }
 
+    /*
     public void handleActions(WebSocketSession socketSession, MessageDto messageDto, ChatService chatService) {
         if (messageDto.getType().equals(MessageDto.MessageType.ENTER)) {
             Chatter chatter = Chatter.builder()
@@ -69,4 +70,5 @@ public class ChatRoom {
     public void sendMessage(MessageDto messageDto, ChatService chatService) {
         chatters.parallelStream().forEach(s -> chatService.sendMessage(WebSockSessionManager.getSession(s.getSessionId()), messageDto));
     }
+    */
 }

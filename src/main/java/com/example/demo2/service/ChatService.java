@@ -47,18 +47,4 @@ public class ChatService {
         chatRoomMap.put(chatRoom.getChatRoomId(), chatRoom);
         return chatRoom;
     }
-
-    public void sendMessage(WebSocketSession socketSession, MessageDto messageDto) {
-        try {
-            socketSession.sendMessage(new TextMessage(mapper.writeValueAsString(messageDto)));
-        } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public ChatRoom findRoomByChatRoomId(String chatId) {
-        return chatRoomMap.get(chatId);
-    }
 }
