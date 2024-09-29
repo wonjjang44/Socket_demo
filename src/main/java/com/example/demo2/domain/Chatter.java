@@ -1,8 +1,10 @@
 package com.example.demo2.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -12,7 +14,15 @@ import lombok.NoArgsConstructor;
 public class Chatter {
 
     @Id
-    private String id;
+    @Column(name = "chatterId")
+    private String chatterId;
 
-    private String nickname;
+    @Column(name = "sessionId")
+    private String sessionId;
+
+    @Builder
+    public Chatter(String id, String sessionId) {
+        this.chatterId = id;
+        this.sessionId = sessionId;
+    }
 }
