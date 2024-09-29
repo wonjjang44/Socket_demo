@@ -57,8 +57,4 @@ public class ChatService {
             throw new RuntimeException(e);
         }
     }
-
-    public ChatRoom findRoomByChatRoomId(String chatId) {
-        return chatRoomMap.get(chatId);
-    }
 }
