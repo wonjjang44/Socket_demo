@@ -3,7 +3,6 @@ package com.example.demo2.service;
 import com.example.demo2.domain.ChatRoom;
 import com.example.demo2.dto.MessageDto;
 import com.example.demo2.repository.ChatRoomRepository;
-import com.example.demo2.repository.ChatterRepository;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.annotation.PostConstruct;
@@ -25,7 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class ChatService {
 
     private final ObjectMapper mapper;
-    private ConcurrentHashMap<Long, ChatRoom> chatRoomMap;
+    private ConcurrentHashMap<String, ChatRoom> chatRoomMap;
     private final ChatRoomRepository chatRoomRepository;
 
     @PostConstruct
@@ -37,7 +36,7 @@ public class ChatService {
         return new ArrayList<>(chatRoomMap.values());
     }
 
-    public ChatRoom findRoomById(Long id) {
+    public ChatRoom findRoomById(String id) {
         return chatRoomMap.get(id);
     }
 
@@ -45,7 +44,7 @@ public class ChatService {
     public ChatRoom createRoom(String name) {
         ChatRoom chatRoom = chatRoomRepository.save(new ChatRoom(name));
         log.info("Create Room : {} {}", chatRoom.getId(), chatRoom.getName());
-        chatRoomMap.put(chatRoom.getId(), chatRoom);
+        chatRoomMap.put(chatRoom.getChatRoomId(), chatRoom);
         return chatRoom;
     }
 
@@ -57,5 +56,9 @@ public class ChatService {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public ChatRoom findRoomByChatRoomId(String chatId) {
+        return chatRoomMap.get(chatId);
     }
 }

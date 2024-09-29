@@ -4,10 +4,8 @@ package com.example.demo2.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class MessageDto {
@@ -16,7 +14,12 @@ public class MessageDto {
     }
 
     private MessageType type;
-    private Long chatRoom;
+    private String chatRoom;
     private String id;
     private String message;
+
+
+    public void setMessage(String s) {
+        this.message = s;
+    }
 }

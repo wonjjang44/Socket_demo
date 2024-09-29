@@ -9,13 +9,13 @@ import java.util.List;
 @Getter
 public class ChatRoomResponse {
 
-    private final Long id;
+    private final String chatRoomId;
     private final String name;
     private final List<Chatter> chatters;
     private final int count;
 
     public ChatRoomResponse(ChatRoom chatRoom) {
-        this.id = chatRoom.getId();
+        this.chatRoomId = chatRoom.getChatRoomId();
         this.name = chatRoom.getName();
         this.chatters = chatRoom.getChatters();
         this.count = chatRoom.getChatters().size();

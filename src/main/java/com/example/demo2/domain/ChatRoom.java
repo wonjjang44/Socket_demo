@@ -12,7 +12,7 @@ import org.springframework.web.socket.WebSocketSession;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -20,9 +20,12 @@ import java.util.Map;
 public class ChatRoom {
 
     @Id
-    @Column(name = "chatRoomId")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(name = "chatRoomId")
+    private String chatRoomId;
 
     @Column(name = "name")
     private String name;
@@ -33,6 +36,7 @@ public class ChatRoom {
 
     @Builder
     public ChatRoom(String name) {
+        this.chatRoomId = UUID.randomUUID().toString();
         this.name = name;
         this.chatters = new ArrayList<>();
     }

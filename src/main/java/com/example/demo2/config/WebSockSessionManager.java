@@ -2,8 +2,6 @@ package com.example.demo2.config;
 
 import org.springframework.web.socket.WebSocketSession;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WebSockSessionManager {
