@@ -33,4 +33,11 @@ public class ChatController {
         return ResponseEntity.ok()
                 .body(roomResponse);
     }
+
+    @GetMapping("/chat/{chatId}")
+    public ResponseEntity<ChatRoomResponse> findChatRoom(@PathVariable(value = "chatId") Long chatId) {
+        ChatRoom chatRoom = chatService.findRoomById(chatId);
+        return ResponseEntity.ok()
+                .body(new ChatRoomResponse(chatRoom));
+    }
 }
