@@ -2,6 +2,7 @@ package com.example.demo2.controller;
 
 import com.example.demo2.domain.ChatRoom;
 import com.example.demo2.dto.AddChatRoomDto;
+import com.example.demo2.dto.ChatRoomResponse;
 import com.example.demo2.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,7 +25,12 @@ public class ChatController {
     }
 
     @GetMapping("/chat/all")
-    public List<ChatRoom> findAllChatRoom() {
-        return chatService.findAllRoom();
+    public ResponseEntity<List<ChatRoomResponse>> findAllChatRoom() {
+        List<ChatRoomResponse> roomResponse = chatService.findAllRoom()
+                .stream()
+                .map(ChatRoomResponse::new)
+                .toList();
+        return ResponseEntity.ok()
+                .body(roomResponse);
     }
 }
