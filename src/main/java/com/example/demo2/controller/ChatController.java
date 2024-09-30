@@ -17,7 +17,6 @@ public class ChatController {
         if (MessageDto.MessageType.ENTER.equals(messageDto.getType())) {
             messageDto.setMessage(messageDto.getId() + "님이 입장하셨습니다.");
         }
-
         if (MessageDto.MessageType.LEAVE.equals(messageDto.getType())) {
             messageDto.setMessage(messageDto.getId() + "님이 퇴장하셨습니다.");
         }
