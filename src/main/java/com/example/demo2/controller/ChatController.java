@@ -15,12 +15,12 @@ public class ChatController {
     @MessageMapping("/chat/message")
     public void message(MessageDto messageDto) {
         if (MessageDto.MessageType.ENTER.equals(messageDto.getType())) {
-            messageDto.setMessage(messageDto.getId() + "님이 입장하셨습니다.");
+            messageDto.setMessage(messageDto.getSender() + "님이 입장하셨습니다.");
         }
 
         if (MessageDto.MessageType.LEAVE.equals(messageDto.getType())) {
-            messageDto.setMessage(messageDto.getId() + "님이 퇴장하셨습니다.");
+            messageDto.setMessage(messageDto.getSender() + "님이 퇴장하셨습니다.");
         }
-        simpMessageSendingOperations.convertAndSend("/sub/chat/room/" + messageDto.getChatRoom(), messageDto);
+        simpMessageSendingOperations.convertAndSend("/sub/chat/room/" + messageDto.getRoomId(), messageDto);
     }
 }
