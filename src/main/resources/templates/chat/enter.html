@@ -12,6 +12,7 @@
 <div class="container" id="pub">
     <div>
         <h2 id="roomName"></h2>
+        <button class="btn btn-primary" type="button" id="leaveButton">나가기</button>
     </div>
     <div class="input-group">
         <div class="input-group-prepend">
@@ -42,6 +43,7 @@
     console.log("Chat Room ID: " + roomId);
 
     document.getElementById('sendButton').addEventListener('click', sendMessage);
+    document.getElementById('leaveButton').addEventListener('click', leaveChatRoom);
     document.getElementById('messageInput').addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
             sendMessage();
@@ -58,9 +60,9 @@
     function sendMessage() {
         var messageInput = document.getElementById('messageInput');
         var message = messageInput.value;
-        if (message) {
+         if (message) {
             ws.send("/pub/chat/message", {}, JSON.stringify({type: 'TALK', roomId: roomId, sender: sender, message: message}));
-            messageInput.value = '';
+           messageInput.value = '';
         }
     }
 
@@ -72,7 +74,10 @@
         messageList.insertBefore(newMessage, messageList.firstChild);
     }
 
-    //채팅방 나가기 버튼 필요 -> rev.type == 'LEAVE' 일 경우 채팅방 참여 종료 메시지 날리도록 구현 예정
+    function leaveChatRoom() {
+        ws.send("/pub/chat/message", {}, JSON.stringify({type: 'LEAVE', roomId: roomId, sender: sender, message: ''}));
+        window.location.href = "http://localhost:8080/chat/room";
+    }
 
     function connect() {
         ws.connect({}, function(frame) {
